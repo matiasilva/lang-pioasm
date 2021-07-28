@@ -1,32 +1,75 @@
 {
-	"$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
-	"name": "PIO Assembly",
-	"patterns": [
-		{
-			"include": "#keywords"
-		},
-		{
-			"include": "#strings"
-		}
-	],
-	"repository": {
-		"keywords": {
-			"patterns": [{
-				"name": "keyword.control.pioasm",
-				"match": "\\b(if|while|for|return)\\b"
-			}]
-		},
-		"strings": {
-			"name": "string.quoted.double.pioasm",
-			"begin": "\"",
-			"end": "\"",
-			"patterns": [
-				{
-					"name": "constant.character.escape.pioasm",
-					"match": "\\\\."
-				}
-			]
-		}
-	},
-	"scopeName": "source.pioasm"
+    "name": "PIO Assembly",
+    "patterns": [
+        {
+            "include": "#instructions"
+        },
+        {
+            "include": "#directives"
+        },
+        {
+            "include": "#labels"
+        },
+        {
+            "include": "#registers"
+        },
+        {
+            "include": "#constants"
+        },
+        {
+            "include": "#embedded"
+        }
+    ],
+    "repository": {
+        "instructions": {
+            "patterns": [
+                {
+                    "name": "keyword.control.pioasm",
+                    "match": "(?i)\b(out|set|in|push|pull|wait|jmp|mov|irq|nop)\b"
+                }
+            ]
+        },
+        "directives": {
+            "patterns": [
+                {
+                    "name": "keyword.other.directives.pioasm",
+                    "match": "(?i)\\b(.define|.extern|.program|.side_set|.wrap|.wrap_target|.origin|.lang_opt)\\b"
+                }
+            ]
+        },
+        "labels": {
+            "patterns": [
+                {
+                    "name": "entity.name.section.pioasm",
+                    "match": "\\b[a-zA-Z_]+$"
+                }
+            ]
+        },
+        "registers": {
+            "patterns": [
+                {
+                    "name": "variable.language.pioasm",
+                    "match": "(?i)\b(exec|isr|null|osr|pc|pins|x|y)\b"
+                }
+            ]
+        },
+        "constants": {
+            "patterns": [
+                {
+                    "name": "constant.language.pioasm",
+                    "match": "PUBLIC"
+                }
+            ]
+        },
+        "embedded": {
+            "name": "meta.embedded.block.c",
+            "patterns": [
+                {
+                    "name": "constant.language.pioasm",
+                    "match": ""
+                }
+            ]
+        }
+    },
+    "scopeName": "source.pioasm"
 }
