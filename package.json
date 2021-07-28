@@ -1,0 +1,25 @@
+{
+    "name": "lang-pioasm",
+    "displayName": "pioasm syntax highlighter",
+    "description": "Syntax highlighter for the Raspberry Pi RP2040 PIO assembly language",
+    "version": "0.0.1",
+    "engines": {
+        "vscode": "^1.58.0"
+    },
+    "categories": [
+        "Programming Languages"
+    ],
+    "contributes": {
+        "languages": [{
+            "id": "pioasm",
+            "aliases": ["PIO Assembly", "pioasm"],
+            "extensions": [".pio"],
+            "configuration": "./language-configuration.json"
+        }],
+        "grammars": [{
+            "language": "pioasm",
+            "scopeName": "source.pioasm",
+            "path": "./syntaxes/pioasm.tmLanguage.json"
+        }]
+    }
+}
