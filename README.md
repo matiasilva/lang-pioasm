@@ -7,6 +7,10 @@ This is a VS Code extension that provides syntax higlighting for the PIO assembl
 * syntax highlighting
 * ...more?
 
+## Testing
+
+"Run debug" and paste in sample PIO file.
+
 ## Contributors
 
 Matias Silva, 2021

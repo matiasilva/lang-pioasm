@@ -18,57 +18,51 @@
         },
         {
             "include": "#embedded"
+        },
+        {
+            "include": "#line-comments"
+        },
+        {
+            "include": "#block-comments"
         }
     ],
     "repository": {
         "instructions": {
-            "patterns": [
-                {
-                    "name": "keyword.control.pioasm",
-                    "match": "(?i)\b(out|set|in|push|pull|wait|jmp|mov|irq|nop)\b"
-                }
-            ]
+            "name": "keyword.control.pioasm",
+            "match": "(?i)\\b(out|set|in|push|pull|wait|jmp|mov|irq|nop)\\b"
         },
         "directives": {
-            "patterns": [
-                {
-                    "name": "keyword.other.directives.pioasm",
-                    "match": "(?i)\\b(.define|.extern|.program|.side_set|.wrap|.wrap_target|.origin|.lang_opt)\\b"
-                }
-            ]
+            "name": "keyword.other.directives.pioasm",
+            "match": "(?i)^(.define|.extern|.program|.side_set|.wrap|.wrap_target|.origin|.lang_opt)\\b"
         },
         "labels": {
-            "patterns": [
-                {
-                    "name": "entity.name.section.pioasm",
-                    "match": "\\b[a-zA-Z_]+$"
-                }
-            ]
+            "name": "entity.name.section.pioasm",
+            "match": "\\b[a-zA-Z_]+:$"
         },
         "registers": {
-            "patterns": [
-                {
-                    "name": "variable.language.pioasm",
-                    "match": "(?i)\b(exec|isr|null|osr|pc|pins|x|y)\b"
-                }
-            ]
+            "name": "variable.language.pioasm",
+            "match": "(?i)\\b(exec|isr|null|osr|pc|pins|x|y|pindirs|pin)\\b"
         },
         "constants": {
-            "patterns": [
-                {
-                    "name": "constant.language.pioasm",
-                    "match": "PUBLIC"
-                }
-            ]
+            "name": "constant.language.pioasm",
+            "match": "PUBLIC"
         },
         "embedded": {
             "name": "meta.embedded.block.c",
+            "begin": "% [a-z-]+ {",
+            "end": "%}",
             "patterns": [
-                {
-                    "name": "constant.language.pioasm",
-                    "match": ""
-                }
+                {"include": "source.c"}
             ]
+        },
+        "line-comments": {
+            "name": "comment.line",
+            "match": "^;.*"
+        },
+        "block-comments": {
+            "name": "comment.block",
+            "begin": "\\/\\*",
+            "end": "\\*\\/"
         }
     },
     "scopeName": "source.pioasm"
