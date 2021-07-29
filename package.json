@@ -3,6 +3,7 @@
     "displayName": "pioasm syntax highlighter",
     "description": "Syntax highlighter for the Raspberry Pi RP2040 PIO assembly language",
     "version": "0.0.1",
+    "icon": "icon.png",
     "engines": {
         "vscode": "^1.58.0"
     },
